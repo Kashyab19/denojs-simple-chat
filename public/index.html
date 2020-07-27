@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deno #2 Chat-Chit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+         body{
+      background: #eee;
+      margin: 40px;
+    }
+    body, button, input{ 
+        font-family: 'Montserrat', sans-serif;
+    }
+    h2{
+      text-align: center;
+      color: #EA3788;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #fbfbfb;
+    }
+    .container{ 
+      max-width: 960px; 
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+    .name-form, .chat-form{ 
+      display: flex; 
+      justify-content: center;
+    }
+    input{ 
+      padding: 16px; 
+      font-size: 1.3em; 
+      margin-right: 10px; 
+      border: 1px solid #ddd; 
+      border-radius: 10px;
+    }
+    button{ 
+      font-size: 1.3em; 
+      padding: 16px; 
+      background: #81A094; 
+      color: white; 
+      border: 0; 
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .chat-list { 
+      padding: 0;
+    }
+    .chat-list li{ 
+      margin: 16px 0; 
+      list-style-type: none; 
+    }
+    .chat-list .name{ 
+      color: #EA3788;
+      font-size: 1.4em; 
+      font-weight: bold; 
+    }
+    .chat-list .mssg{ 
+      font-size: 1.2em;
+      margin-top: 4px;
+    } 
+    .hidden{
+      display: none;
+    }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Deno-Chat</h2>
+        <form action="" class="name-form">
+            <input type="text" name="nickname" placeholder="Choose your Nick Name" required/>
+            <button>Enter the Room</button>
+        </form>
+
+        <div class="chatroom hidden">
+            <ul class="chat-list">
+                <li>
+                        <div class="name">Raj Kumar</div>
+                        <div class="mssg">Howdy!</div>
+                </li>
+            </ul>
+
+            <form action="" class="chat-form">
+                <input type="text" name="mssg" placeholder="Enter your message" required/>
+                <button>Send</button>
+            </form>
+
+        </div>
+    </div>
+  
+
+   <script>
+
+   </script>
+    
+
+
+</body>
+</html>
