@@ -1,4 +1,4 @@
-import {WebSocket} from "https://deno.land/std/ws/mod.ts";
+import {WebSocket,isWebSocketCloseEvent} from "https://deno.land/std/ws/mod.ts";
 import { v4 } from "https://deno.land/std/uuid/mod.ts";
 
 
@@ -11,8 +11,19 @@ const chatConnection = async(ws:WebSocket) =>{
     const my_uid =  v4.generate();
 
     sockets.set(my_uid, ws);
-    
-    console.log(sockets)
+
+    for await(const ev of ws){
+        console.log('Event of WS ==>'+ ev);
+
+
+        if(!isWebSocketCloseEvent(ev)){
+            sockets.delete(my_uid);
+        }
+        if(typeof(ev)=== 'string'){
+            let eventObject = JSON.parse(ev);
+            console.log('Event Object of WS ==>'+ eventObject);
+        }
+    }
 
 
 }
