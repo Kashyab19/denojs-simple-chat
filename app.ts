@@ -1,5 +1,15 @@
 import { serve } from "https://deno.land/std/http/server.ts";
 
+import {
+    acceptWebSocket,
+    isWebSocketCloseEvent,
+    isWebSocketPingEvent,
+    WebSocket,
+    acceptable
+  } from "https://deno.land/std/ws/mod.ts";
+
+import {chatConnection} from  "./websocket/chatroom.ts"
+
 //Setting up server:
 
 const server = serve({ port: 3010});
@@ -11,6 +21,19 @@ for await (const req of server){
             status : 200,
             body : await Deno.open("./public/index.html")
         })
+    }
+
+    //Accept WebSocket:
+    if(req.url === "/ws"){
+        if(acceptable(req)){
+            acceptWebSocket({
+                conn:req.conn,
+                bufReader:req.r,
+                bufWriter:req.w,
+                headers:req.headers,
+            })
+            .then(chatConnection)
+        }
     }
 }
 
